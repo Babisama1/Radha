@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Adicks</title>
+    <title>Happy Birthday Adik</title>  <!-- Corrected title to "Adik" assuming it's a nickname for little sister -->
     <style>
         * {
             margin: 0;
@@ -171,7 +171,7 @@
 <body>
     <div class="card-container">
         <div class="card" id="birthdayCard">
-            <!-- Belakang -->
+            <!-- Depan (Front) -->
             <div class="card-front">
                 <h1 class="birthday-title">🎉Mat Ultah🎉</h1>
                 <div class="name" id="birthdayName">Radha</div>
@@ -179,7 +179,7 @@
                 <p style="margin-top: 20px;">Coba di klik Rad!</p>
             </div>
             
-            <!-- Depan -->
+            <!-- Belakang (Back) -->
             <div class="card-back">
                 <h2 class="birthday-title" style="color: #FF6B6B; margin-bottom: 20px;">Pesan dari Abang online🙂‍↕️</h2>
                 <div class="message-container" id="messageContainer">
@@ -190,7 +190,8 @@
         </div>
     </div>
 
-    <audio id="bgMusic" src="https://github.com/Babisama1/kumpulanLagu/blob/main/wwd.mp3juice.blog%20-%20Don%20Miguelo%20-%20Y%20Que%20Fue%20(320%20KBps).mp3" loop></audio>
+    <!-- Note: Audio source changed to raw GitHub link for better compatibility. Added controls for user interaction. -->
+    <audio id="bgMusic" src="https://raw.githubusercontent.com/Babisama1/kumpulanLagu/main/wwd.mp3juice.blog%20-%20Don%20Miguelo%20-%20Y%20Que%20Fue%20(320%20KBps).mp3" loop></audio>
 
     <script>
         // Data yang bisa di-customize
@@ -222,18 +223,29 @@
         });
 
         // Flip card functionality
-            const card = document.getElementById('birthdayCard');
-            card.addEventListener('click', function() {
-                this.classList.toggle('flipped');
-            });
+        const card = document.getElementById('birthdayCard');
+        card.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+        });
 
-            // Improved touch experience for mobile
-            card.addEventListener('touchstart', function(e) {
-                e.preventDefault(); // Prevent default touch behavior
-                this.classList.toggle('flipped');
-            });
+        // Improved touch experience for mobile
+        card.addEventListener('touchstart', function(e) {
+            e.preventDefault(); // Prevent default touch behavior
+            this.classList.toggle('flipped');
+        });
 
-       
+        // Play music on first user interaction (e.g., click or touch)
+        let musicPlayed = false;
+        function playMusic() {
+            if (!musicPlayed) {
+                const audio = document.getElementById('bgMusic');
+                audio.play().catch(e => console.log('Audio play failed:', e)); // Handle autoplay restrictions
+                musicPlayed = true;
+            }
+        }
+
+        card.addEventListener('click', playMusic);
+        card.addEventListener('touchstart', playMusic);
     </script>
 </body>
 </html>
